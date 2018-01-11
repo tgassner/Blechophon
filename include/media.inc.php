@@ -1,110 +1,179 @@
 <?php  
 
-function getNumberOfMediaItemByKindQualifier($qualifier) {
-  $db = getDB();
-  $sql = " select count(*) as numberof                                                                          \n" .
-         " from mediaitem                                                                                       \n" .
-         " join mediaevent on (mediaevent.mediaeventId = mediaitem.mediaeventId)                                \n" .
-         " join mediakind on (mediakind.mediakindId = mediaevent.mediakindid                                    \n" .
-         "                    and mediakind.qualifier = '" . trim(mysql_real_escape_string($qualifier)) . "')   \n";
-  $result = mysql_query($sql, $db);
-  if ($myrow = mysql_fetch_assoc($result)){  
-      return $myrow['numberof'];
-  }
-  return "";
-}
+class MediaBean {
 
-function getMediaeventById($mediaeventid) {
-  $db = getDB();
-  $sql = "select * from mediaevent where mediaeventid = " . trim(mysql_real_escape_string($mediaeventid));
-  $result = mysql_query($sql, $db);
-  if ($myrow = mysql_fetch_assoc($result)){  
-      return fillMediaEventObject($myrow);
-  }
-  return null;
-}
+  const MEDIAKIND_QUALIFIER_FOTOS = "FOTOS";
+  const MEDIAKIND_QUALIFIER_VIDEOS = "VIDEOS";
+  const MEDIAKIND_QUALIFIER_AUDIO = "AUDIO";
 
-function getMediaKindById($mediaKindId) {
-  $db = getDB();
-  $sql = "select * from mediakind where mediaKindid = " . trim(mysql_real_escape_string($mediaKindId));
-  $result = mysql_query($sql, $db);
-  if ($myrow = mysql_fetch_assoc($result)){  
-      return fillMediaKindObject($myrow);
-  }
-  return null;
-}
+  public static function getEventsByMediaKindQualifier($mediaKindQualifier) {
+    $sql = " select mediaevent.*                                                                                               \n" .
+            " from mediaevent                                                                                                  \n" .
+            " join mediacathegory on (mediaevent.mediacathegoryId = mediacathegory.mediacathegoryId)                           \n" .
+            " join mediakind on (mediakind.mediakindId = mediaevent.mediakindId and mediakind.qualifier = :mediaKindQualifier) \n" .
+            " order by mediacathegory.orderval, year desc, mediaevent.mediaeventId desc                                        \n";
 
-function getMediacathegoryById($mediacathegoryId) {
-  $db = getDB();
-  $sql = "select * from mediacathegory where mediacathegoryId = " . trim(mysql_real_escape_string($mediacathegoryId));
-  $result = mysql_query($sql, $db);
-  if ($myrow = mysql_fetch_assoc($result)){  
-      return fillMediacathegoryObject($myrow);
-  }
-  return null;
-}
-
-function findAllMediaItemsByMediaEventId($mediaeventId) {
-    $db = getDB();
-    $sql = "SELECT * from mediaitem where mediaeventId = ". trim(mysql_real_escape_string($mediaeventId));
-    $result = mysql_query($sql, $db);
-    $ret = array();
-    while ($myrow = mysql_fetch_assoc($result)){  
-      $mediaItem = fillMediaItemObject($myrow);
-      array_push($ret,$mediaItem);
+    try {
+        $db = getDBPDO();
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam("mediaKindQualifier", $mediaKindQualifier, PDO::PARAM_STR);
+        $stmt->execute();
+        $mediaevents = array();
+        while ($myrow = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $mediaevents[] = MediaBean::fillMediaEventObject($myrow);
+        }
+        $db = null;
+        return $mediaevents;
+    } catch (PDOException $e) {
+        LoggingBean::dologging(LoggingBean::ERROR, "mediaevent", $e->getMessage(), $e);
     }
-    return $ret;
-}
+  }
 
-function fillMediaEventObject($myrow) {
-  $mediaEvent = new MediaEvent();
-  $mediaEvent->setMediaeventId($myrow['mediaeventId']);
-  $mediaEvent->setDirectoryEvent($myrow['directoryEvent']);
-  $mediaEvent->setDirectoryMain($myrow['directoryMain']);
-  $mediaEvent->setDirectoryThumbs($myrow['directoryThumbs']);
-  $mediaEvent->setEventName($myrow['eventName']);
-  $mediaEvent->setZipfile($myrow['zipfile']);
-  $mediaEvent->setZipsize($myrow['zipsize']);
-  $mediaEvent->setPrivate($myrow['private']);
-  $mediaEvent->setYear($myrow['year']);
-  $mediaEvent->setMediacathegoryId($myrow['mediacathegoryId']);
-  $mediaEvent->setMediakindId($myrow['mediakindId']);
-  $mediaEvent->setMediaItems(null);
-  return $mediaEvent;       
-}
+  public static function getMediacategoryById($mediacategoryId) {
+    $sql = "select * from mediacathegory where mediacathegoryId = :mediacathegoryId";
+    try {
+        $db = getDBPDO();
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam("mediacathegoryId", $mediacategoryId, PDO::PARAM_INT);
+        $stmt->execute();
+        $ret = null;
+        $myrow = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($myrow) {
+            $ret = MediaBean::fillMediacategoryObject($myrow);
+        }
+        $db = null;
+        return $ret;
+    } catch (PDOException $e) {
+        LoggingBean::dologging(LoggingBean::ERROR, "mediacategory", $e->getMessage(), $e);
+    }
+  }
 
-function fillMediaItemObject($myrow) {
-  $mediaItem = new MediaItem();
-  $mediaItem->setMediaItemId($myrow['mediaItemId']);
-  $mediaItem->setFilename($myrow['filename']);
-  $mediaItem->setComment($myrow['comment']);
-  $mediaItem->setMainwidth($myrow['mainwidth']);
-  $mediaItem->setMainheight($myrow['mainheight']);
-  $mediaItem->setThumbwidth($myrow['thumbwidth']);
-  $mediaItem->setThumbheight($myrow['thumbheight']);
-  $mediaItem->setDuration($myrow['duration']);
-  $mediaItem->setBytes($myrow['bytes']);
-  $mediaItem->setMediaeventId($myrow['mediaeventId']);
-  return $mediaItem;       
-}
+  public static function getMediaeventById($mediaeventid) {
+    $sql = "select * from mediaevent where mediaeventid = :mediaeventid";
+    try {
+        $db = getDBPDO();
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam("mediaeventid", $mediaeventid, PDO::PARAM_INT);
+        $stmt->execute();
+        $ret = null;
+        $myrow = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($myrow) {
+            $ret = MediaBean::fillMediaEventObject($myrow);
+        }
+        $db = null;
+        return $ret;
+    } catch (PDOException $e) {
+        LoggingBean::dologging(LoggingBean::ERROR, "mediaevent", $e->getMessage(), $e);
+    }
+  }
 
-function fillMediaKindObject($myrow) {
-  $mediaKind = new MediaKind();
-  $mediaKind->setMediakindId($myrow['mediakindId']);
-  $mediaKind->setDirectory($myrow['directory']);
-  $mediaKind->setQualifier($myrow['qualifier']);
-  $mediaKind->setDescription($myrow['description']);
-  return $mediaKind;       
-}
+  function getNumberOfMediaItemByKindQualifier($qualifier) {
+    $db = getDB();
+    $sql = " select count(*) as numberof                                                                          \n" .
+          " from mediaitem                                                                                       \n" .
+          " join mediaevent on (mediaevent.mediaeventId = mediaitem.mediaeventId)                                \n" .
+          " join mediakind on (mediakind.mediakindId = mediaevent.mediakindid                                    \n" .
+          "                    and mediakind.qualifier = '" . trim(mysql_real_escape_string($qualifier)) . "')   \n";
+    $result = mysql_query($sql, $db);
+    if ($myrow = mysql_fetch_assoc($result)){  
+        return $myrow['numberof'];
+    }
+    return "";
+  }
 
-function fillMediacathegoryObject($myrow) {
-  $mediacathegory = new Mediacathegory();
-  $mediacathegory->setMediacathegoryId($myrow['mediacathegoryId']);
-  $mediacathegory->setDirectory($myrow['directory']);
-  $mediacathegory->setQualifier($myrow['Qualifier']);
-  $mediacathegory->setDescription($myrow['description']);
-  $mediacathegory->setOrderval($myrow['orderval']);
-  return $mediacathegory;       
+  public static function getMediaKindById($mediaKindId) {
+    $sql = "select *                          \n" .
+            "from mediakind                   \n" .
+            "where mediaKindid = :mediaKindid \n";
+    try {
+        $db = getDBPDO();
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam("mediaKindid", $mediaKindId, PDO::PARAM_INT);
+        $stmt->execute();
+        $ret = null;
+        $myrow = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($myrow) {
+            $ret = MediaBean::fillMediaKindObject($myrow);
+        }
+        $db = null;
+        return $ret;
+    } catch (PDOException $e) {
+        LoggingBean::dologging(LoggingBean::ERROR, "mediakind", $e->getMessage(), $e);
+    }
+  }
+
+  public static function findAllMediaItemsByMediaEventId($mediaeventId) {
+    $sql = "SELECT *                            \n" .
+            "from mediaitem                     \n" .
+            "where mediaeventId = :mediaeventId \n" .
+            "order by filename                  \n";
+
+    try {
+        $db = getDBPDO();
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam("mediaeventId", $mediaeventId, PDO::PARAM_INT);
+        $stmt->execute();
+        $mediaitems = array();
+        while ($myrow = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $mediaitems[] = MediaBean::fillMediaItemObject($myrow);
+        }
+        $db = null;
+        return $mediaitems;
+    } catch (PDOException $e) {
+        print_r($e);
+    }
+  }
+
+  function fillMediaEventObject($myrow) {
+    $mediaEvent = new MediaEvent();
+    $mediaEvent->setMediaeventId($myrow['mediaeventId']);
+    $mediaEvent->setDirectoryEvent($myrow['directoryEvent']);
+    $mediaEvent->setDirectoryMain($myrow['directoryMain']);
+    $mediaEvent->setDirectoryThumbs($myrow['directoryThumbs']);
+    $mediaEvent->setEventName($myrow['eventName']);
+    $mediaEvent->setZipfile($myrow['zipfile']);
+    $mediaEvent->setZipsize($myrow['zipsize']);
+    $mediaEvent->setPrivate($myrow['private']);
+    $mediaEvent->setYear($myrow['year']);
+    $mediaEvent->setMediacategoryId($myrow['mediacathegoryId']);
+    $mediaEvent->setMediakindId($myrow['mediakindId']);
+    $mediaEvent->setMediaItems(null);
+    return $mediaEvent;       
+  }
+
+  function fillMediaItemObject($myrow) {
+    $mediaItem = new MediaItem();
+    $mediaItem->setMediaItemId($myrow['mediaItemId']);
+    $mediaItem->setFilename($myrow['filename']);
+    $mediaItem->setComment($myrow['comment']);
+    $mediaItem->setMainwidth($myrow['mainwidth']);
+    $mediaItem->setMainheight($myrow['mainheight']);
+    $mediaItem->setThumbwidth($myrow['thumbwidth']);
+    $mediaItem->setThumbheight($myrow['thumbheight']);
+    $mediaItem->setDuration($myrow['duration']);
+    $mediaItem->setBytes($myrow['bytes']);
+    $mediaItem->setMediaeventId($myrow['mediaeventId']);
+    return $mediaItem;       
+  }
+
+  function fillMediaKindObject($myrow) {
+    $mediaKind = new MediaKind();
+    $mediaKind->setMediakindId($myrow['mediakindId']);
+    $mediaKind->setDirectory($myrow['directory']);
+    $mediaKind->setQualifier($myrow['qualifier']);
+    $mediaKind->setDescription($myrow['description']);
+    return $mediaKind;       
+  }
+
+  function fillMediacategoryObject($myrow) {
+    $mediacategory = new Mediacategory();
+    $mediacategory->setMediacategoryId($myrow['mediacathegoryId']);
+    $mediacategory->setDirectory($myrow['directory']);
+    $mediacategory->setQualifier($myrow['Qualifier']);
+    $mediacategory->setDescription($myrow['description']);
+    $mediacategory->setOrderval($myrow['orderval']);
+    return $mediacategory;       
+  }
 }
 
 class Mediakind {
@@ -151,22 +220,22 @@ class Mediakind {
 
 
 
-class Mediacathegory {
+class Mediacategory {
   var $mediacathegoryId;
   var $directory;
   var $qualifier;
   var $description;
   var $orderval;
   
-  function Mediacathegory() {
+  function Mediacategory() {
   }
   
-  function getMediacathegoryId(){
-      return $this->mediacathegoryId;
+  function getMediacategoryId(){
+      return $this->mediacategoryId;
     }
     
-  function setMediacathegoryId($mediacathegoryId){
-    $this->mediacathegoryId = $mediacathegoryId;
+  function setMediacategoryId($mediacategoryId){
+    $this->mediacategoryId = $mediacategoryId;
   }
   
   function getDirectory(){
@@ -212,7 +281,7 @@ class Mediacathegory {
   var $zipsize;
   var $private;
   var $year;
-  var $mediacathegoryId;
+  var $mediacategoryId;
   var $mediakindId;
   var $mediaItems;
  
@@ -292,12 +361,12 @@ class Mediacathegory {
     $this->year = $year;
   }
   
-  function getMediacathegoryId(){
-      return $this->mediacathegoryId;
+  function getMediacategoryId(){
+      return $this->mediacategoryId;
     }
     
-  function setMediacathegoryId($mediacathegoryId){
-    $this->mediacathegoryId = $mediacathegoryId;
+  function setMediacategoryId($mediacategoryId){
+    $this->mediacategoryId = $mediacategoryId;
   }
   
   function getMediakindId(){
@@ -310,7 +379,7 @@ class Mediacathegory {
   
   function getMediaItems(){
       if ($this->mediaItems == null) {
-        $this->mediaItems = findAllMediaItemsByMediaEventId($this->mediaeventId);
+        $this->mediaItems = MediaBean::findAllMediaItemsByMediaEventId($this->mediaeventId);
       }
       return $this->mediaItems;
     }

@@ -1,35 +1,67 @@
 <?php
 
-    function getTerminById($terminid) {
-      $db = getDB();
-      $result = mysql_query("select * from termin where terminid = " . mysql_real_escape_string($terminid), $db);
-      if ($myrow = mysql_fetch_assoc($result)){
-		    return new Termin($myrow['terminid'], $myrow['terminq'], $myrow['vondateprimary'], $myrow['bisdateprimary'], $myrow['vontimeprimary'], $myrow['bistimeprimary'], $myrow['what'],$myrow['where'],$myrow['infos']);
-		  }
-    }
-	
-    function getTermine($new, $count, $terminq) {
-      $db = getDB();
-			$termine = array();
-      if ($new) {
-        $sql = "select * from termin where vondateprimary >= date(now()) and terminq = '" . mysql_real_escape_string($terminq) . "' order by vondateprimary";
-      } else {
-        $sql = "select * from termin where terminid = '" . mysql_real_escape_string($terminq) . "' order by datumvonprimary";
-      }
-      $result = mysql_query($sql,$db);
-      $countlocal = 0;
-      //echo($sql);
-      while ($myrow = mysql_fetch_assoc($result)){
-        $termin = new Termin($myrow['terminid'], $myrow['terminq'], $myrow['vondateprimary'], $myrow['bisdateprimary'], $myrow['vontimeprimary'], $myrow['bistimeprimary'], $myrow['what'],$myrow['where'],$myrow['infos']);
-        array_push($termine, $termin);
-        $countlocal++;
-        if ($count > 0 && $countlocal >= $count) {
-          break;
+    class TerminBean {
+
+      public static function getTerminById($terminid) {
+        $db = getDB();
+        $result = mysql_query("select * from termin where terminid = " . mysql_real_escape_string($terminid), $db);
+        if ($myrow = mysql_fetch_assoc($result)){
+          return new Termin($myrow['terminid'], $myrow['terminq'], $myrow['vondateprimary'], $myrow['bisdateprimary'], $myrow['vontimeprimary'], $myrow['bistimeprimary'], $myrow['what'],$myrow['where'],$myrow['infos']);
         }
       }
-      mysql_free_result($result);
-      return $termine;
-     }
+    
+      public static function getTermine($new, $count, $terminq, $asc = "ASC") {
+        if ($count > 0) {
+          if ($new) {
+              $sql = "select * from termin where bisdateprimary >= CURDATE() and terminq = :terminq order by vondateprimary " . $asc . ", vontimeprimary " . $asc . " limit 0, :limit";
+          } else {
+              $sql = "select * from termin where terminq = :terminq order by vondateprimary " . $asc . ", vontimeprimary " . $asc . " limit 0, :limit";
+          }
+        } else {
+          if ($new) {
+              $sql = "select * from termin where bisdateprimary >= CURDATE() and terminq = :terminq order by vondateprimary " . $asc . ", vontimeprimary " . $asc;
+          } else {
+              $sql = "select * from termin where terminq = :terminq order by vondateprimary " . $asc . ", vontimeprimary " . $asc;
+          }
+        }
+
+        try {
+          $db = getDBPDO();
+          $stmt = $db->prepare($sql);
+          if ($count > 0) {
+              $stmt->bindParam("limit", $count, PDO::PARAM_INT);
+          }
+          $stmt->bindParam("terminq", $terminq, PDO::PARAM_STR);
+          $stmt->execute();
+          $termine = array();
+          while ($myrow = $stmt->fetch(PDO::FETCH_ASSOC)) {
+              $termine[] = TerminBean::fillTerminPDO($myrow);
+          }
+          $db = null;
+          return $termine;
+        } catch (PDOException $e) {
+          print_r($e);
+          return array();
+        }
+
+      }
+
+      private static function fillTerminPDO($terminPDO, Termin $termin = null) {
+        if (!isset($termin)) {
+          $termin = new Termin();
+        }
+        $termin->setTerminid($terminPDO['terminid']);
+        $termin->setVondateprimary($terminPDO['vondateprimary']);
+        $termin->setBisdateprimary($terminPDO['bisdateprimary']);
+        $termin->setVontimeprimary($terminPDO['vontimeprimary']);
+        $termin->setBisdateprimary($terminPDO['bistimeprimary']);
+        $termin->setWhat($terminPDO['what']);
+        $termin->setWhere($terminPDO['where']);
+        $termin->setInfos($terminPDO['infos']);
+        $termin->setTerminq($terminPDO['terminq']);
+        return $termin;
+      }
+    }
 
    class Termin {
     var $terminid;
@@ -41,18 +73,6 @@
     var $what;
     var $where;
     var $infos;
-
-    function Termin($terminid, $terminq, $vondateprimary, $bisdateprimary, $vontimeprimary, $bistimeprimary, $what, $where, $infos) {
-      $this->terminid = $terminid;
-      $this->terminq = $terminq;
-      $this->vondateprimary = $vondateprimary;
-      $this->bisdateprimary = $bisdateprimary;
-      $this->vontimeprimary = $vontimeprimary;
-      $this->bistimeprimary = $bistimeprimary;
-      $this->what = $what;
-      $this->where = $where;
-      $this->infos = $infos;
-    }
 
     function getTerminid() {
       return $this->terminid;

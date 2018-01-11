@@ -6,11 +6,28 @@ include('include/user.inc.php');
 include('include/video.inc.php');
 include('include/password.inc.php');
 
-function getDB() {
-    $db = mysql_connect("localhost","blechophon",getPassword());
-    mysql_select_db("blechophon",$db);
-    return $db;
+function getDBPDO() {
+  $dbhost = "localhost";
+  $dbuser = "blechophon";
+  $dbpass = getPassword();
+  $dbname = "blechophon";
+      
+  $dbh = new PDO(
+      "mysql:host=$dbhost;dbname=$dbname", 
+      $dbuser, 
+      $dbpass,
+      array(PDO::ATTR_PERSISTENT => true, // Verbindung bleibt bis scriptende gecached !
+          PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8",
+          PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)); 
+
+  return $dbh;
 }
+
+//function getDB() {
+//    $db = mysql_connect("localhost","blechophon", getPassword());
+//    mysql_select_db("blechophon",$db);
+//   return $db;
+//}
 
 function calcImgSize($original) {
   $ret = $original;

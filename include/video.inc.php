@@ -1,47 +1,67 @@
 <?php
 
-function getVideoByID($videoid) {
-    $db = getDB();
-    $result = mysql_query("select * from video where videoid = " . mysql_real_escape_string($videoid), $db);
-    if ($myrow = mysql_fetch_assoc($result)) {
-        return fillVideoObject($myrow);
-    }
-}
+    class VideoBean {
+        function getVideoByID($videoid) {
+            $sql = "select * from video where videoid = :videoid";
+            try {
+                $db = getDBPDO();
+                $stmt = $db->prepare($sql);
+                $stmt->bindParam("videoid", $videoid, PDO::PARAM_INT);
+                $stmt->execute();
+                $ret = null;
+                $myrow = $stmt->fetch(PDO::FETCH_ASSOC);
+                if ($myrow) {
+                    $ret = VideoBean::fillVideoObject($myrow);
+                }
+                $db = null;
+                return $ret;
+            } catch (PDOException $e) {
+                print_r($e);
+            }
+        }
 
-function getAllVideosSorted() {
-    $db = getDB();
-    $result = mysql_query("select * from video order by year desc, datum", $db);
-    $ret = array();
-    while ($myrow = mysql_fetch_assoc($result)) {
-        array_push($ret, fillVideoObject($myrow));
-    }
-    return $ret;
-}
+        public static function getAllVideosSorted() {
+            $sql = "select * from video order by year desc, datum";
+            try {
+                $db = getDBPDO();
+                $stmt = $db->prepare($sql);
+                $stmt->execute();
+                $videos = array();
+                while ($myrow = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $videos[] = VideoBean::fillVideoObject($myrow);
+                }
+                $db = null;
+                return $videos;
+            } catch (PDOException $e) {
+                print_r($e);
+            }
+        }
 
-function storeVideo($url, $embeded, $headline, $year) {
-    $db = getDB();
-    $sql = "INSERT INTO video (url,embeded,headline,year,datum,userid) VALUES ('" . mysql_real_escape_string($url) . "','" . $embeded . "','" . mysql_real_escape_string($headline) . "'," . $year . ",now()," . getCurrentUserId() . ")";
-    $result = mysql_query($sql);
-    if (mysql_affected_rows() != 1 || $errorno != 0) {
-        echo "<center class=\"error\">Eintrag fehlgeschlagen</center>";
-    } else {
-        echo "<center class=\"successful\">Eintrag erfolgreich</center>";
-    }
-}
+        function storeVideo($url, $embeded, $headline, $year) {
+            $db = getDB();
+            $sql = "INSERT INTO video (url,embeded,headline,year,datum,userid) VALUES ('" . mysql_real_escape_string($url) . "','" . $embeded . "','" . mysql_real_escape_string($headline) . "'," . $year . ",now()," . getCurrentUserId() . ")";
+            $result = mysql_query($sql);
+            if (mysql_affected_rows() != 1 || $errorno != 0) {
+                echo "<center class=\"error\">Eintrag fehlgeschlagen</center>";
+            } else {
+                echo "<center class=\"successful\">Eintrag erfolgreich</center>";
+            }
+        }
 
-function fillVideoObject($myrow) {
-    $VideoData = new Video($myrow['videoID'], $myrow['url'], $myrow['embeded'], $myrow['headline'], $myrow['year'], $myrow['datum'], $myrow['userID']);
-    return $VideoData;
-}
+        public static function fillVideoObject($myrow) {
+            $VideoData = new Video($myrow['videoID'], $myrow['url'], $myrow['embeded'], $myrow['headline'], $myrow['year'], $myrow['datum'], $myrow['userID']);
+            return $VideoData;
+        }
 
-function deleteVideo($videoid) {
-    $result = mysql_query("DELETE FROM video where videoid = " . $videoid);
-    if (mysql_affected_rows() != 1 || $errorno != 0) {
-        echo "<center class=\"error\">Video l&öuml;schen fehlgeschlagen</center>";
-    } else {
-        echo "<center class=\"successful\">Video l&öuml;schen erfolgreich</center>";
+        function deleteVideo($videoid) {
+            $result = mysql_query("DELETE FROM video where videoid = " . $videoid);
+            if (mysql_affected_rows() != 1 || $errorno != 0) {
+                echo "<center class=\"error\">Video l&ï¿½uml;schen fehlgeschlagen</center>";
+            } else {
+                echo "<center class=\"successful\">Video l&ï¿½uml;schen erfolgreich</center>";
+            }
+        }
     }
-}
 
 class Video {
 
