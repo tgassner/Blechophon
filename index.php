@@ -98,6 +98,9 @@ switch ($siteQualifier) {
                         <a href="?s=home#ueberUns">Über uns</a>
                     </li>
                     <li>
+                        <a href="?s=home#konzert">Konzert</a>
+                    </li>
+                    <li>
                         <a href="?s=home#termine">Termine</a>
                     </li>
                     <li>

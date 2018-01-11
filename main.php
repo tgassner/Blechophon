@@ -3,8 +3,6 @@
         <div class="header-content">
             <div class="header-content-inner">
                 <h1 style="margin-top: 5.5em;text-shadow: 3px 3px 3px #D2232A, 4px 4px 3px #FFFFFF, -1px -1px 3px #FFFFFF, 1px -1px 3px #FFFFFF, -1px 1px 3px #FFFFFF;">Blechophon</h1>
-                <!--<p style="color:#000000; text-shadow: 1px 1px 1px #D2232A, 2px 2px 2px #FFFFFF, 2px 2px 1px #FFFFFF, -1px -1px 3px #FFFFFF, 1px -1px 3px #FFFFFF, -1px 1px 3px #FFFFFF; font-size: 1.45em; ">immer die richtige Wahl für gute Unterhaltung und Stimmung bei Ihrer Veranstaltung.</p>-->
-                <!--<a href="#" class="btn btn-primary btn-lg">Engage Now</a>-->
             </div>
         </div>
     </header>
@@ -15,9 +13,6 @@
             <div class="row">
                 <div class="col-sm-6">
                     <img class="img-responsive img-circle center-block" src="images/home/004.jpg" alt="">
-
-                    <!--<script src='http://connect.facebook.net/de_DE/all.js#xfbml=1'></script> <fb:like-box href='http://www.facebook.com/#!/pages/Blechophon/196287127083396' width='<?php echo(calcImgSize(600)); ?>' show_faces='true' stream='true' header='false'></fb:like-box>-->
-
                 </div>
                 <div class="col-sm-6">
                     <h2 class="section-heading">Über uns</h2>
@@ -26,6 +21,17 @@
                     <p class="text-light justify">Seit dieser Zeit spielt BLECHOPHON bei Früh-bzw. Dämmerschoppen, Polterabenden sowie Weihnachts – und Firmenfeiern frei nach unserem Motto „Musik mit Begeisterung und Leidenschaft auf hohem Niveau“.</p>
                     <p class="text-light justify">Doch nicht nur Unterhaltungsmusik zählt zum Repertoire von BLECHOPHON sondern auch konzertante Blechbläsermusik wie mehrmalige Erfolge beim Wettbewerb Musik in kleinen Gruppen, ein Gemeinschaftskonzert mit dem Wartberger Chor „Pro Musica“ und eigene Konzerte mit dem Titel „Blechophon in Concert“ im Jahr 2014 und „Blechophon XL in Concert“ im Jahr 2016 zeigen.</p>
                     <p class="text-light justify">BLECHOPHON immer die richtige Wahl für gute Unterhaltung und Stimmung bei Ihrer Veranstaltung.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Konzert -->
+    <section class="content-konzert" id="konzert" name="konzert">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <img class="img-responsive center-block" src="images/Bruckmuehle_Werbebild.jpg" alt="">
                 </div>
             </div>
         </div>
