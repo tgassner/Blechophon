@@ -31,7 +31,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
-                    <img class="img-responsive center-block" src="images/Bruckmuehle_Werbebild.jpg" alt="">
+                    <a href="http://www.bruckmuehle.at/?id=82&event=3637" target="_blank">
+                        <img class="img-responsive center-block" src="images/Bruckmuehle_Werbebild.jpg" alt="">
+                    </a>
+                </div>
+                <div class="col-sm-12">
+                    <br>
+                    <a href="http://www.bruckmuehle.at/?id=82&event=3637" target="_blank">Infos / Kartenverkauf - Bruckmühle bruckmuehle.at</a>
                 </div>
             </div>
         </div>
