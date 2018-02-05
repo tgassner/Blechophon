@@ -149,5 +149,13 @@
     function getFormatedVonDatePrimary() {
       return substr($this->vondateprimary,8,2).".".substr($this->vondateprimary,5,2).".".substr($this->vondateprimary,0,4);
     }
+
+    public function getFormatedTimeVon() {
+      if ($this->vontimeprimary == "00:00:00") {
+        return;
+      }
+
+      return substr($this->vontimeprimary, 0, 5);
+   }
 }
 ?>

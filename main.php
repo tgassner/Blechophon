@@ -26,23 +26,6 @@
         </div>
     </section>
 
-    <!-- Konzert -->
-    <section class="content-konzert" id="konzert" name="konzert">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
-                    <a href="http://www.bruckmuehle.at/?id=82&event=3637" target="_blank">
-                        <img class="img-responsive center-block" src="images/Bruckmuehle_Werbebild.jpg" alt="">
-                    </a>
-                </div>
-                <div class="col-sm-12">
-                    <br>
-                    <a href="http://www.bruckmuehle.at/?id=82&event=3637" target="_blank">Infos / Kartenverkauf - Bruckmühle bruckmuehle.at</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
 	<!-- Termine -->
     <section class="content" id="termine" name="termine">
         <div class="container">
@@ -62,7 +45,7 @@
                         <?php foreach($termine as $ensembletermin) {  ?>
                             <tr>
                                 <td style="vertical-align: top; padding: 4px"><?php echo($ensembletermin->getFormatedVonDatePrimary()); ?></td>
-                                <td style="vertical-align: top; padding: 4px"><?php echo($ensembletermin->getVontimeprimary()); ?></td>
+                                <td style="vertical-align: top; padding: 4px"><?php echo($ensembletermin->getFormatedTimeVon()); ?></td>
                                 <td style="vertical-align: top; padding: 4px">
                                     <?php 
                                         echo(htmlentities(utf8_encode($ensembletermin->getWhat()))); 
@@ -71,7 +54,7 @@
                                         }
                                     ?>
                                 </td>
-                                <td style="vertical-align: top; padding: 4px"><?php echo(htmlentities(utf8_encode($ensembletermin->getInfos()))); ?></td>
+                                <td style="vertical-align: top; padding: 4px"><smaller><?php echo(utf8_encode($ensembletermin->getInfos())); ?></smaller></td>
                             </tr>
                         <?php }  ?>
                     </table>

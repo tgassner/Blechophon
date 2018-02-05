@@ -69,6 +69,12 @@ switch ($siteQualifier) {
 
 <body>
 
+<!--
+<div id='BruckMuehle' style="position: fixed; height:160px; z-index:999999; width: 100%; top: 52px; text-align: center;">
+    <a href="http://www.bruckmuehle.at/?id=82&event=3637" target="_blank"><img src="images/Bruckmuehle_Werbebild02.jpg" alt="" style="height: 120px"></a>
+</div>
+-->
+
     <!-- Navigation -->
     <nav id="siteNav" class="navbar navbar-default navbar-fixed-top affix" role="navigation">
         <div class="container">
@@ -98,9 +104,6 @@ switch ($siteQualifier) {
                         <a href="?s=home#ueberUns">Über uns</a>
                     </li>
                     <li>
-                        <a href="?s=home#konzert">Konzert</a>
-                    </li>
-                    <li>
                         <a href="?s=home#termine">Termine</a>
                     </li>
                     <li>
@@ -119,7 +122,6 @@ switch ($siteQualifier) {
                         <a href="?s=home#links">Links</a>
                     </li>
                 </ul>
-                
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container -->
     </nav>
