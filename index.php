@@ -116,10 +116,13 @@ switch ($siteQualifier) {
                         <a href="?s=videos">Videos</a>
                     </li>
                     <li>
-                        <a href="?s=home#kontakt">Kontakt</a>
+                        <a href="?s=home#links">Links</a>
                     </li>
                     <li>
-                        <a href="?s=home#links">Links</a>
+                        <a href="?s=home#references">Referenzen</a>
+                    </li>
+                    <li>
+                        <a href="?s=home#kontakt">Kontakt</a>
                     </li>
                 </ul>
             </div><!-- /.navbar-collapse -->

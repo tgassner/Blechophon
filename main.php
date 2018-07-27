@@ -66,7 +66,7 @@
         </div>
     </section>
 
-    <!-- Promos -->
+    <!-- Fotos / Videos -->
 	<div class="container-fluid">
         <div class="row promo">
         	<a href="?s=fotos">
@@ -82,60 +82,80 @@
         </div>
     </div><!-- /.container-fluid -->
 
-    <!-- Content 4 -->
+    <!-- Links -->
     <section class="content content-2" id="links" name="links">
         <div class="container">
-                <h2 class="section-header">Links</h2>
-                <div class="container">
-                    <div class="col-sm-6">
-                        <p class="text-light">Musikverein Engerwitzdorf</p>
-                    </div>    
-                    <div class="col-sm-6">
-                        <p class="text-lighter"><a class="text-lighter" href="http://musik-engerwitzdorf.at">http://musik-engerwitzdorf.at</a>	 </p>
-                    </div>   
+            <h2 class="section-header">Links</h2>
+            <div class="container">
+                <div class="col-sm-6">
+                    <p class="text-light">Musikverein Engerwitzdorf</p>
                 </div>
-                <div class="container">
-                    <div class="col-sm-6">
-                        <p class="text-light">Musikverein Grünbach</p>
-                    </div>    
-                    <div class="col-sm-6">
-                        <p class="text-lighter"><a class="text-lighter" href="http://musikgr.bplaced.net/">http://musikgr.bplaced.net/</a></p>
-                    </div>   
+                <div class="col-sm-6">
+                    <p class="text-lighter"><a class="text-lighter" href="http://musik-engerwitzdorf.at">http://musik-engerwitzdorf.at</a>	 </p>
                 </div>
-                <div class="container">
-                    <div class="col-sm-6">
-                        <p class="text-light">Musikverein Katsdorf</p>
-                    </div>    
-                    <div class="col-sm-6">
-                        <p class="text-lighter"><a class="text-lighter" href="http://www.musikverein-katsdorf.at/">http://www.musikverein-katsdorf.at/</a>	     </p>
-                    </div>   
+            </div>
+            <div class="container">
+                <div class="col-sm-6">
+                    <p class="text-light">Musikverein Grünbach</p>
                 </div>
-                <div class="container">
-                    <div class="col-sm-6">
-                        <p class="text-light">Musikverein Bad Leonfelden</p>
-                    </div>    
-                    <div class="col-sm-6">
-                        <p class="text-lighter"><a class="text-lighter" href="http://www.mv-badleonfelden.at">http://www.mv-badleonfelden.at</a>	 </p>
-                    </div>   
+                <div class="col-sm-6">
+                    <p class="text-lighter"><a class="text-lighter" href="http://musikgr.bplaced.net/">http://musikgr.bplaced.net/</a></p>
                 </div>
-                <div class="container">
-                    <div class="col-sm-6">
-                        <p class="text-light">Mehl Brass</p>
-                    </div>    
-                    <div class="col-sm-6">
-                        <p class="text-lighter"><a class="text-lighter" href="http://mehlbrass.mmsoft.at/">http://mehlbrass.mmsoft.at/</a>	 </p>
-                    </div>   
+            </div>
+            <div class="container">
+                <div class="col-sm-6">
+                    <p class="text-light">Musikverein Katsdorf</p>
                 </div>
-                <div class="container">
-                    <div class="col-sm-6">
-                        <p class="text-light">Theatergruppe Engerwitzdorf</p>                
-                    </div>    
-                    <div class="col-sm-6">
-                        <p class="text-lighter"><a class="text-lighter" href="https://www.theatergruppe-engerwitzdorf.at/">https://www.theatergruppe-engerwitzdorf.at/</a> </p>                
-                    </div>   
+                <div class="col-sm-6">
+                    <p class="text-lighter"><a class="text-lighter" href="http://www.musikverein-katsdorf.at/">http://www.musikverein-katsdorf.at/</a>	     </p>
                 </div>
-
+            </div>
+            <div class="container">
+                <div class="col-sm-6">
+                    <p class="text-light">Musikverein Bad Leonfelden</p>
+                </div>
+                <div class="col-sm-6">
+                    <p class="text-lighter"><a class="text-lighter" href="http://www.mv-badleonfelden.at">http://www.mv-badleonfelden.at</a>	 </p>
+                </div>
+            </div>
+            <div class="container">
+                <div class="col-sm-6">
+                    <p class="text-light">Mehl Brass</p>
+                </div>
+                <div class="col-sm-6">
+                    <p class="text-lighter"><a class="text-lighter" href="http://mehlbrass.mmsoft.at/">http://mehlbrass.mmsoft.at/</a>	 </p>
+                </div>
+            </div>
+            <div class="container">
+                <div class="col-sm-6">
+                    <p class="text-light">Theatergruppe Engerwitzdorf</p>
+                </div>
+                <div class="col-sm-6">
+                    <p class="text-lighter"><a class="text-lighter" href="https://www.theatergruppe-engerwitzdorf.at/">https://www.theatergruppe-engerwitzdorf.at/</a> </p>
+                </div>
             </div>
         </div>
-    </section>    
-    
+    </section>
+
+
+    <!-- Referenzen -->
+    <section class="content" id="references" name="references">
+        <div class="container">
+            <h2 class="section-header">Referenzen</h2>
+            <p>Über die Jahre konnten wir neben gemütlichen, kleineren Auftritten auch zahlreiche größere Veranstaltungen musikalisch umrahmen. Hier ein kleiner Auszug daraus.</p>
+
+            <ul>
+                <li>Bezirksmusikfest Katsdorf (Bezirk Perg)</li>
+                <li>Mühlviertler Wies’n (Messehalle Freistadt)</li>
+                <li>Nacht der Blasmusik (Lacken)</li>
+                <li>ORF OÖ Wandertag (Gallneukirchen)</li>
+                <li>Oktoberfest Hirschbach</li>
+                <li>OÖ Landesgartenschau (Kremsmünster)</li>
+                <li>Marktfest Schenkenfelden</li>
+                <li>Musiroas Herzogsdorf</li>
+                <li>Konzerte bei „Blasmusik in Linz“ (Musikpavillon/Hauptplatz)</li>
+            </ul>
+        </div>
+    </section>
+
+
