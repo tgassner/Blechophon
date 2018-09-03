@@ -101,11 +101,11 @@
         }
 
         if (isset($_POST["Wo"])) {
-            $termin->setInfos($_POST["Wo"]);
+            $termin->setWhere($_POST["Wo"]);
         }
 
         if (isset($_POST["Infos"])) {
-            $termin->setWhere($_POST["Infos"]);
+            $termin->setInfos($_POST["Infos"]);
         }
 
         if (isset($_POST["terminq"])) {
