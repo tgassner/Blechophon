@@ -67,20 +67,6 @@ class MediaBean {
     }
   }
 
-  function getNumberOfMediaItemByKindQualifier($qualifier) {
-    $db = getDB();
-    $sql = " select count(*) as numberof                                                                          \n" .
-          " from mediaitem                                                                                       \n" .
-          " join mediaevent on (mediaevent.mediaeventId = mediaitem.mediaeventId)                                \n" .
-          " join mediakind on (mediakind.mediakindId = mediaevent.mediakindid                                    \n" .
-          "                    and mediakind.qualifier = '" . trim(mysql_real_escape_string($qualifier)) . "')   \n";
-    $result = mysql_query($sql, $db);
-    if ($myrow = mysql_fetch_assoc($result)){  
-        return $myrow['numberof'];
-    }
-    return "";
-  }
-
   public static function getMediaKindById($mediaKindId) {
     $sql = "select *                          \n" .
             "from mediakind                   \n" .

@@ -37,29 +37,9 @@
             }
         }
 
-        function storeVideo($url, $embeded, $headline, $year) {
-            $db = getDB();
-            $sql = "INSERT INTO video (url,embeded,headline,year,datum,userid) VALUES ('" . mysql_real_escape_string($url) . "','" . $embeded . "','" . mysql_real_escape_string($headline) . "'," . $year . ",now()," . getCurrentUserId() . ")";
-            $result = mysql_query($sql);
-            if (mysql_affected_rows() != 1 || $errorno != 0) {
-                echo "<center class=\"error\">Eintrag fehlgeschlagen</center>";
-            } else {
-                echo "<center class=\"successful\">Eintrag erfolgreich</center>";
-            }
-        }
-
         public static function fillVideoObject($myrow) {
             $VideoData = new Video($myrow['videoID'], $myrow['url'], $myrow['embeded'], $myrow['headline'], $myrow['year'], $myrow['datum'], $myrow['userID']);
             return $VideoData;
-        }
-
-        function deleteVideo($videoid) {
-            $result = mysql_query("DELETE FROM video where videoid = " . $videoid);
-            if (mysql_affected_rows() != 1 || $errorno != 0) {
-                echo "<center class=\"error\">Video l&�uml;schen fehlgeschlagen</center>";
-            } else {
-                echo "<center class=\"successful\">Video l&�uml;schen erfolgreich</center>";
-            }
         }
     }
 

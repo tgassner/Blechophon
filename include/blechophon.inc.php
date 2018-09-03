@@ -53,60 +53,9 @@ function calcImgSize($original) {
 
   return $ret;
 }
-  
-  function isLoggedIn(){
-    if (isset($_SESSION['login']) && ($_SESSION['login'] == "true")){
-      return true;
-    }else{
-      return false;
-    }
-  }
-  
-  function checkLogin(){
-    if (isset($_POST['loginusername']) && !(isset($_SESSION['login']))) {
-      $username = $_POST['loginusername'];
-      $passwort = sha1(trim($_POST['loginpasswort']));
-      
-      $db = getDB();
 
-      $result = mysql_query("select userid from user where (username = '" . mysql_real_escape_string($username) . "'  or  email = '" . mysql_real_escape_string($username) . "' )and password = '" . $passwort . "' and canlogin = 1",$db);
-      if (!$result) {
-          echo 'Abfrage konnte nicht ausgeführt werden: ' . mysql_error();
-      }
-      $myrow = mysql_fetch_row($result);
-      mysql_free_result($result);
-      if (!($myrow)){
-        $state = "loginerror";
-        echo("<div style=\"error\">login fehlgeschlagen</div>");
-      }else{	      	
-        $state = "loginok";
-        $userid = $myrow[0];
-        
-        $user = getFullUserByID($userid);
-        
-        $_SESSION['login'] = "true";
-        $_SESSION['username'] = $user->getUsername();
-        $_SESSION['userid'] = $userid;
+  
 
-        $result = mysql_query("select sektion from rechte r, rechteuser ru where r.rechteid = ru.rechteid and userid = '" . $myrow[0] . "'",$db);
-        $sektionenlist = array();
-        
-        while ($myrow = mysql_fetch_row($result)){
-          $sektionenlist[] = $myrow[0];
-        } //while für sektionen
-        mysql_free_result($result);
-        $_SESSION['sektionen'] = $sektionenlist;
-        
-        $logsql = "insert into log (userid, ip, httplang, useragent, logdatetime) values(" . $_SESSION['userid'] . ", '" . $_SERVER['REMOTE_ADDR'] . "', '" . $_SERVER['HTTP_ACCEPT_LANGUAGE'] . "', '" . $_SERVER['HTTP_USER_AGENT'] . "', now() )";
-        //echo($logsql);
-        $result = mysql_query($logsql);
-      } //else
-    } else if (isset($_POST['logout']) && (isset($_SESSION['login'])))  { // end if request method post  
-        $_SESSION['login'] = "false";
-        $_SESSION['username'] = "";
-        $_SESSION['userid'] = -1;
-    }
-  } //checkLogin
   
   function formatTime($time){
     return substr($time,0,5);
@@ -151,13 +100,6 @@ function calcImgSize($original) {
       }
       return $encryptet;
     }
-    
-    function getEncryptetEmailLink($plainText){
-      return "<a href=\"javascript:linkTo_UnCryptMailto('" . getEncryptEmail("mailto:" . htmlentities($plainText)) . "');\">" . getMaskedEMailLinkText(htmlentities($plainText)) . "</a>";
-    }
-    
-    function getEncryptetEmailLinkWithSeperatLinkText($plainText,$linkText){
-      return "<a href=\"javascript:linkTo_UnCryptMailto('" . getEncryptEmail("mailto:" . htmlentities($plainText)) . "');\">" . htmlentities($linkText) . "</a>";
-    }
+
 
 ?>

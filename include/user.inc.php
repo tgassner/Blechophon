@@ -19,21 +19,6 @@ function getCurrentUserId() {
     return $_SESSION['userid'];
 }
 
-function getFullUserByID($userid){
-    $db = getDB();
-    $user;
-    $sql = SELECT_ALL_FROM_USER_U ." FROM user u where userid =".$userid;
-    //echo($sql);
-    $result = mysql_query($sql, $db);
-    if (!$result) {
-      echo 'Abfrage konnte nicht ausgeführt werden: ' . mysql_error();
-  }
-    if ($myrow = mysql_fetch_assoc($result)){  
-      $user = fillUserObject($myrow);
-    }
-    return $user;
-  }
-  
   function fillUserObject($myrow) {
     return new User($myrow['userid'],$myrow['username'],$myrow['password'],
               $myrow['aktiv'],$myrow['canlogin'],$myrow['order'],
