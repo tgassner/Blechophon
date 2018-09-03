@@ -19,21 +19,25 @@ function getCurrentUserId() {
     return $_SESSION['userid'];
 }
 
-function getFullUserByID($userid){
-    $db = getDB();
-    $user;
-    $sql = SELECT_ALL_FROM_USER_U ." FROM user u where userid =".$userid;
-    //echo($sql);
-    $result = mysql_query($sql, $db);
-    if (!$result) {
-      echo 'Abfrage konnte nicht ausgeführt werden: ' . mysql_error();
-  }
-    if ($myrow = mysql_fetch_assoc($result)){  
-      $user = fillUserObject($myrow);
+    function getFullUserByID($userid) {
+        $sql = SELECT_ALL_FROM_USER_U . " FROM user u where userid = :userid";
+        try {
+            $db = getDBPDO();
+            $stmt = $db->prepare($sql);
+            $stmt->bindParam("userid", $userid, PDO::PARAM_INT);
+            $stmt->execute();
+            $myrow = $stmt->fetch(PDO::FETCH_ASSOC);
+            if ($myrow) {
+                $user = fillUserObject($myrow);
+            } else {
+                $user = null;
+            }
+            $db = null;
+            return $user;
+        } catch (PDOException $e) {
+        }
     }
-    return $user;
-  }
-  
+
   function fillUserObject($myrow) {
     return new User($myrow['userid'],$myrow['username'],$myrow['password'],
               $myrow['aktiv'],$myrow['canlogin'],$myrow['order'],

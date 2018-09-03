@@ -3,11 +3,25 @@
     class TerminBean {
 
       public static function getTerminById($terminid) {
-        $db = getDB();
-        $result = mysql_query("select * from termin where terminid = " . mysql_real_escape_string($terminid), $db);
-        if ($myrow = mysql_fetch_assoc($result)){
-          return new Termin($myrow['terminid'], $myrow['terminq'], $myrow['vondateprimary'], $myrow['bisdateprimary'], $myrow['vontimeprimary'], $myrow['bistimeprimary'], $myrow['what'],$myrow['where'],$myrow['infos']);
-        }
+          $sql = "select * from termin where terminid = :terminid";
+
+          try {
+              $db = getDBPDO();
+              $stmt = $db->prepare($sql);
+              $stmt->bindParam("terminid", $terminid, PDO::PARAM_STR);
+              $stmt->execute();
+              $termine = array();
+              if ($myrow = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                  $termine[] = TerminBean::fillTerminPDO($myrow);
+                  $db = null;
+                  return $termine;
+              }
+              $db = null;
+              return null;
+          } catch (PDOException $e) {
+              print_r($e);
+              return array();
+          }
       }
     
       public static function getTermine($new, $count, $terminq, $asc = "ASC") {

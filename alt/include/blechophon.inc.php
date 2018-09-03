@@ -6,10 +6,26 @@
     return $db;
   }
 
+  function getDBPDO() {
+      $dbhost = "localhost";
+      $dbuser = "blechophon";
+      $dbpass = getPassword();
+      $dbname = "blechophon";
+
+      $dbh = new PDO(
+          "mysql:host=$dbhost;dbname=$dbname",
+          $dbuser,
+          $dbpass,
+          array(PDO::ATTR_PERSISTENT => true, // Verbindung bleibt bis scriptende gecached !
+              PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8",
+              PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+
+      return $dbh;
+  }
+
 include('include/termine.inc.php');
-include('include/media.inc.php');
 include('include/user.inc.php');
-include('include/video.inc.php');
+include('../include/password.inc.php');
 
 function calcImgSize($original) {
   $ret = $original;
@@ -49,20 +65,23 @@ function calcImgSize($original) {
       $username = $_POST['loginusername'];
       $passwort = sha1(trim($_POST['loginpasswort']));
       
-      $db = getDB();
+      //$db = getDB();
+      $dbPdo = getDBPDO();
 
-      $result = mysql_query("select userid from user where (username = '" . mysql_real_escape_string($username) . "'  or  email = '" . mysql_real_escape_string($username) . "' )and password = '" . $passwort . "' and canlogin = 1",$db);
-      if (!$result) {
-          echo 'Abfrage konnte nicht ausgeführt werden: ' . mysql_error();
-      }
-      $myrow = mysql_fetch_row($result);
-      mysql_free_result($result);
-      if (!($myrow)){
+      $sql = "select userid from user where (username = :userName  or  email = :email )and password = :password and canlogin = 1";
+      $stmt = $dbPdo->prepare($sql);
+      $stmt->bindParam("userName", $username, PDO::PARAM_STR);
+      $stmt->bindParam("email", $username, PDO::PARAM_STR);
+      $stmt->bindParam("password", $passwort, PDO::PARAM_STR);
+      $stmt->execute();
+      $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+      if (!($result)){
         $state = "loginerror";
         echo("<div style=\"error\">login fehlgeschlagen</div>");
       }else{	      	
         $state = "loginok";
-        $userid = $myrow[0];
+        $userid = $result["userid"];
         
         $user = getFullUserByID($userid);
         
@@ -70,18 +89,16 @@ function calcImgSize($original) {
         $_SESSION['username'] = $user->getUsername();
         $_SESSION['userid'] = $userid;
 
-        $result = mysql_query("select sektion from rechte r, rechteuser ru where r.rechteid = ru.rechteid and userid = '" . $myrow[0] . "'",$db);
-        $sektionenlist = array();
-        
-        while ($myrow = mysql_fetch_row($result)){
-          $sektionenlist[] = $myrow[0];
+        $sql2 = "select sektion from rechte r, rechteuser ru where r.rechteid = ru.rechteid and userid = :userId";
+        $stmt2 = $dbPdo->prepare($sql2);
+        $stmt2->bindParam("userId", $userid, PDO::PARAM_INT);
+        $stmt2->execute();
+
+        while ($result2 = $stmt2->fetch(PDO::FETCH_ASSOC)) {
+          $sektionenlist[] = $result2["sektion"];
         } //while für sektionen
-        mysql_free_result($result);
         $_SESSION['sektionen'] = $sektionenlist;
         
-        $logsql = "insert into log (userid, ip, httplang, useragent, logdatetime) values(" . $_SESSION['userid'] . ", '" . $_SERVER['REMOTE_ADDR'] . "', '" . $_SERVER['HTTP_ACCEPT_LANGUAGE'] . "', '" . $_SERVER['HTTP_USER_AGENT'] . "', now() )";
-        //echo($logsql);
-        $result = mysql_query($logsql);
       } //else
     } else if (isset($_POST['logout']) && (isset($_SESSION['login'])))  { // end if request method post  
         $_SESSION['login'] = "false";
