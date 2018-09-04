@@ -32,9 +32,6 @@
             <div class="row">
                 <div class="col-sm-6">
                 	<h2 class="section-header">Termine</h2>
-                	<?php $termine = array(); ?>
-                    <?php $termine = array_merge($termine, TerminBean::getTermine(true, 0, "TERMIN")); ?>
-                    <?php $termine = array_merge($termine,  TerminBean::getTermine(true, 0, "PROBE")); ?>
                     <table>
                         <tr>
                             <th style="vertical-align: top; padding: 4px">Datum</th>
@@ -42,20 +39,42 @@
                             <th style="vertical-align: top; padding: 4px">Was</th>
                             <th style="vertical-align: top; padding: 4px">Infos</th>
                         </tr>
-                        <?php foreach($termine as $ensembletermin) {  ?>
+                	    <?php $termine = TerminBean::getTermine(true, 0, "TERMIN"); ?>
+                        <?php foreach($termine as $termin) {  ?>
                             <tr>
-                                <td style="vertical-align: top; padding: 4px"><?php echo($ensembletermin->getFormatedVonDatePrimary()); ?></td>
-                                <td style="vertical-align: top; padding: 4px"><?php echo($ensembletermin->getFormatedTimeVon()); ?></td>
+                                <td style="vertical-align: top; padding: 4px"><?php echo($termin->getFormatedVonDatePrimary()); ?></td>
+                                <td style="vertical-align: top; padding: 4px"><?php echo($termin->getFormatedTimeVon()); ?></td>
                                 <td style="vertical-align: top; padding: 4px">
-                                    <?php 
-                                        echo(htmlentities(utf8_encode($ensembletermin->getWhat()))); 
-                                        if ($ensembletermin->getWhere() != "") {
-                                            echo("<br><small>[" . $ensembletermin->getWhere() . "]</small>");
+                                    <?php
+                                        echo(htmlentities(utf8_encode($termin->getWhat())));
+                                        if ($termin->getWhere() != "") {
+                                            echo("<br><small>[" . $termin->getWhere() . "]</small>");
                                         }
                                     ?>
                                 </td>
-                                <td style="vertical-align: top; padding: 4px"><smaller><?php echo(utf8_encode($ensembletermin->getInfos())); ?></smaller></td>
+                                <td style="vertical-align: top; padding: 4px"><smaller><?php echo(utf8_encode($termin->getInfos())); ?></smaller></td>
                             </tr>
+                        <?php }  ?>
+                        <?php $proben = TerminBean::getTermine(true, 0, "PROBE"); ?>
+                        <?php if (!empty($proben)) { ?>
+                            <tr>
+                                <td colspan="4" style="vertical-align: top; padding: 4px; color: #999999">Proben</td>
+                            </tr>
+                            <?php foreach($proben as $probe) {  ?>
+                                <tr>
+                                    <td style="vertical-align: top; padding: 4px; color: #999999"><?php echo($probe->getFormatedVonDatePrimary()); ?></td>
+                                    <td style="vertical-align: top; padding: 4px; color: #999999"><?php echo($probe->getFormatedTimeVon()); ?></td>
+                                    <td style="vertical-align: top; padding: 4px; color: #999999">
+                                        <?php
+                                        echo("XX" . htmlentities(utf8_encode($probe->getWhat())));
+                                        if ($probe->getWhere() != "") {
+                                            echo("<br><small>[" . $probe->getWhere() . "]</small>");
+                                        }
+                                        ?>
+                                    </td>
+                                    <td style="vertical-align: top; padding: 4px; color: #999999"><smaller><?php echo(utf8_encode($probe->getInfos())); ?></smaller></td>
+                                </tr>
+                            <?php }  ?>
                         <?php }  ?>
                     </table>
                 </div>                

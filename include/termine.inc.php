@@ -27,15 +27,15 @@
       public static function getTermine($new, $count, $terminq, $asc = "ASC") {
         if ($count > 0) {
           if ($new) {
-              $sql = "select * from termin where bisdateprimary >= CURDATE() and terminq = :terminq order by vondateprimary " . $asc . ", vontimeprimary " . $asc . " limit 0, :limit";
+              $sql = "select * from termin where bisdateprimary >= CURDATE() and terminq = :terminq order by vondateprimary " . $asc . ", bisdateprimary " . $asc . " limit 0, :limit";
           } else {
-              $sql = "select * from termin where terminq = :terminq order by vondateprimary " . $asc . ", vontimeprimary " . $asc . " limit 0, :limit";
+              $sql = "select * from termin where terminq = :terminq order by vondateprimary " . $asc . ", bisdateprimary " . $asc . " limit 0, :limit";
           }
         } else {
           if ($new) {
-              $sql = "select * from termin where bisdateprimary >= CURDATE() and terminq = :terminq order by vondateprimary " . $asc . ", vontimeprimary " . $asc;
+              $sql = "select * from termin where bisdateprimary >= CURDATE() and terminq = :terminq order by vondateprimary " . $asc . ", bisdateprimary " . $asc;
           } else {
-              $sql = "select * from termin where terminq = :terminq order by vondateprimary " . $asc . ", vontimeprimary " . $asc;
+              $sql = "select * from termin where terminq = :terminq order by vondateprimary " . $asc . ", bisdateprimary " . $asc;
           }
         }
 
