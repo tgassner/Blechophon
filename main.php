@@ -64,14 +64,7 @@
                                 <tr>
                                     <td style="vertical-align: top; padding: 4px; color: #999999"><?php echo($probe->getFormatedVonDatePrimary()); ?></td>
                                     <td style="vertical-align: top; padding: 4px; color: #999999"><?php echo($probe->getFormatedTimeVon()); ?></td>
-                                    <td style="vertical-align: top; padding: 4px; color: #999999">
-                                        <?php
-                                        echo("XX" . htmlentities(utf8_encode($probe->getWhat())));
-                                        if ($probe->getWhere() != "") {
-                                            echo("<br><small>[" . $probe->getWhere() . "]</small>");
-                                        }
-                                        ?>
-                                    </td>
+                                    <td style="vertical-align: top; padding: 4px; color: #999999"><?php echo($probe->getWhere()); ?></td>
                                     <td style="vertical-align: top; padding: 4px; color: #999999"><smaller><?php echo(utf8_encode($probe->getInfos())); ?></smaller></td>
                                 </tr>
                             <?php }  ?>
