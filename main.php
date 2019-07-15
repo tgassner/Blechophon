@@ -157,6 +157,8 @@
             <p>Über die Jahre konnten wir neben gemütlichen, kleineren Auftritten auch zahlreiche größere Veranstaltungen musikalisch umrahmen. Hier ein kleiner Auszug daraus.</p>
 
             <ul>
+                <li>MidEurope (Schladming)</li>
+                <li>Bezirksmusikfest Urfahr-Umgebung (Bad Leonfelden)</li>
                 <li>Bezirksmusikfest Katsdorf (Bezirk Perg)</li>
                 <li>Mühlviertler Wies’n (Messehalle Freistadt)</li>
                 <li>Nacht der Blasmusik (Lacken)</li>
