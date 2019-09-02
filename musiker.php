@@ -97,11 +97,10 @@
 
                 <?php person(6, "eckertmarkus.jpg", "Markus Eckert", "Tuba", false); ?>
 
-                <?php person(7, "haidingerlukas.jpg", "Lukas Haidinger", "Schlagzeug", false); ?>
-
-
                 <h2>Ehemalige Musiker</h2>
                 <br>
+
+                <?php person(7, "haidingerlukas.jpg", "Lukas Haidinger", "Schlagzeug", true); ?>
 
                 <?php person(8, "bockmarkus.jpg", "Markus Bock", "Trompete, Flügelhorn", true); ?>
 
