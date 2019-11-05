@@ -12,7 +12,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-6">
-                    <img class="img-responsive img-circle center-block" src="images/home/004.jpg" alt="">
+                    <img class="img-responsive img-circle center-block" src="images/ueberUns.jpg" alt="">
                 </div>
                 <div class="col-sm-6">
                     <h2 class="section-heading">Über uns</h2>

@@ -28,7 +28,7 @@ header {
     min-height: auto;
     text-align: center;
     color: #fff;
-    background-image: url('../images/home/001.jpg');
+    background-image: url('../images/startseite.jpg');
     background-position: center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -198,11 +198,11 @@ header .header-content .header-content-inner p {
 
 .item-1 {
     /*background: url('../images/writing.jpg');*/
-    background: url('../images/home/003_3_1.jpg');
+    background: url('../images/FotosFoto.jpg');
 	}
 	
 .item-2 {
-	background: url('../images/home/002_2_1.jpg');
+	background: url('../images/VideosFoto.jpg');
 	}
 	
 .item-3 {
