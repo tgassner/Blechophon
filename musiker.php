@@ -91,6 +91,10 @@
 
                 <?php person(3, "hofbauerfranz.jpg", "Franz Hofbauer", "Trompete, Flügelhorn", false); ?>
 
+                <?php person(11, "anonymous.jpg", "Julian Mörzinger", "Trompete, Flügelhorn", false); ?>
+
+                <?php person(12, "anonymous.jpg", "Anton Wall", "Schlagzeug", false); ?>
+
                 <?php person(4, "dumphartmartin.jpg", "Martin Dumphart", "Tenorhorn, Posaune", false); ?>
 
                 <?php person(5, "hoffelnerjosefjun.jpg", "Pepi Hoffelner", "Bariton, Posaune", false); ?>
