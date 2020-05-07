@@ -99,7 +99,7 @@
 
                 <?php person(6, "eckertmarkus.jpg", "Markus Eckert", "Tuba", false); ?>
 
-                <?php person(12, "anonymous.jpg", "Anton Wall", "Schlagzeug", false); ?>
+                <?php person(12, "AntonWall.jpg", "Anton Wall", "Schlagzeug", false); ?>
 
                 <h2>Ehemalige Musiker</h2>
                 <br>
