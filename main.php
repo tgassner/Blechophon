@@ -39,8 +39,18 @@
                             <th style="vertical-align: top; padding: 4px">Was</th>
                             <th style="vertical-align: top; padding: 4px">Infos</th>
                         </tr>
+                        <?php $currentYear = date("Y"); ?>
+                        <?php $lastUsedYear = $currentYear ?>
                 	    <?php $termine = TerminBean::getTermine(true, 0, "TERMIN"); ?>
-                        <?php foreach($termine as $termin) {  ?>
+                        <?php foreach($termine as $termin) { ?>
+                            <?php $currentTerminYear = substr($termin->getVondateprimary(),0,4); ?>
+                            <?php if (($currentTerminYear != $currentYear) && ($lastUsedYear != $currentTerminYear)) { ?>
+                                    <th style="vertical-align: top; padding: 4px"><?php echo($currentTerminYear); ?></th>
+                                    <th style="vertical-align: top; padding: 4px"></th>
+                                    <th style="vertical-align: top; padding: 4px"></th>
+                                    <th style="vertical-align: top; padding: 4px"></th>
+                            <?php } ?>
+                            <?php $lastUsedYear = $currentTerminYear; ?>
                             <tr>
                                 <td style="vertical-align: top; padding: 4px"><?php echo($termin->getFormatedVonDatePrimary()); ?></td>
                                 <td style="vertical-align: top; padding: 4px"><?php echo($termin->getFormatedTimeVon()); ?></td>
