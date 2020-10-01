@@ -131,7 +131,7 @@
             <div class="col-sm-2">
                 <div id='my-gallery_<?php echo($key); ?>'>
                     <a class='image-link center-block' href='images/personen/fotos/<?php echo($filename); ?>' data-size='<?php echo($arr[0]); ?>x<?php echo($arr[1]); ?>'>
-                        <img src='images/personen/thumbnails/<?php echo($filename); ?>' style='<?php if ($grayscale) { echo("filter: grayscale(100%)"); } ?>' width='100px' height='100px' alt='<?php echo($name); ?>' title='<?php echo($name); ?>' /> 
+                        <img src='images/personen/thumbnails/<?php echo($filename); ?>' style='filter: drop-shadow(2px 4px 6px black) <?php if ($grayscale) { echo(" grayscale(100%) "); } ?>' width='100px' height='100px' alt='<?php echo($name); ?>' title='<?php echo($name); ?>' /> 
                     </a>
                 </div>
             </div>
