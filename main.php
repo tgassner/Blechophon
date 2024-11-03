@@ -16,11 +16,11 @@
                 </div>
                 <div class="col-sm-6">
                     <h2 class="section-heading">Über uns</h2>
-                    <p class="text-light justify">Die Wurzeln von BLECHOPHON liegen in einem Blechbläserensemble welches im Jahr 2006 für einen Auftritt bei einer Bergmesse gegründet wurde und aus Mitgliedern bestand welche sich bereits aus Ihrer gemeinsamen Zeit beim Jugendorchester in Engerwitzdorf kannten.</p>
-                    <p class="text-light justify">In den Jahren danach wurde die Besetzung dieses Ensembles immer wieder verändert und neue Mitglieder kamen hinzu bis schließlich im Jahr 2008 BLECHOPHON als eigenständiges Ensemble gegründet wurde.</p>
-                    <p class="text-light justify">Seit dieser Zeit spielt BLECHOPHON bei Früh-bzw. Dämmerschoppen, Polterabenden sowie Weihnachts – und Firmenfeiern frei nach unserem Motto „Musik mit Begeisterung und Leidenschaft auf hohem Niveau“.</p>
-                    <p class="text-light justify">Doch nicht nur Unterhaltungsmusik zählt zum Repertoire von BLECHOPHON sondern auch konzertante Blechbläsermusik wie mehrmalige Erfolge beim Wettbewerb Musik in kleinen Gruppen, ein Gemeinschaftskonzert mit dem Wartberger Chor „Pro Musica“ und eigene Konzerte mit dem Titel „Blechophon in Concert“ im Jahr 2014, „Blechophon XL in Concert“ im Jahr 2016 und „abraBRASSdabra“ im Jahr 2018 zeigen.</p>
-                    <p class="text-light justify">BLECHOPHON immer die richtige Wahl für gute Unterhaltung und Stimmung bei Ihrer Veranstaltung.</p>
+                    <p class="text-light justify">Die Wurzeln von BLECHOPHON liegen in einem Blechbläserensemble welches 2006 für einen Auftritt bei einer Bergmesse gegründet wurde und aus Mitgliedern bestand, welche sich bereits aus Ihrer gemeinsamen Zeit beim Jugendorchester in Engerwitzdorf kannten.</p>
+                    <p class="text-light justify">In den Jahren danach wurde die Besetzung dieses Ensembles immer wieder verändert und neue Mitglieder kamen hinzu bis schließlich 2008 BLECHOPHON als eigenständiges Ensemble gegründet wurde.</p>
+                    <p class="text-light justify">Seit dieser Zeit spielt BLECHOPHON bei verschiedensten Veranstaltungen wie Frühschoppen, Dämmerschoppen, Polterabenden, Weihnachtsfeiern, Firmenfeiern, Messen und noch vielen mehr frei nach unserem Motto „Musik mit Begeisterung und Leidenschaft auf hohem Niveau“.</p>
+                    <p class="text-light justify">Ja nach Veranstaltung kann BLECHOPHON auch in unterschiedlichen Formationen auftreten – von Quartett über Quintett bis hin zum Septett.</p>
+                    <p class="text-light justify"><span style="font-weight: bold">BLECHOPHON</span> immer die richtige Wahl für gute Unterhaltung und Stimmung!</p>
                 </div>
             </div>
         </div>
@@ -177,7 +177,10 @@
                 <li>OÖ Landesgartenschau (Kremsmünster)</li>
                 <li>Marktfest Schenkenfelden</li>
                 <li>Musiroas Herzogsdorf</li>
-                <li>Konzerte bei „Blasmusik in Linz“ (Musikpavillon/Hauptplatz)</li>
+                <li>Auftritte bei „Blasmusik in Linz“ (Musikpavillon/Hauptplatz)</li>
+                <li>Blechophon in Concert (2014)</li>
+                <li>Blechophon XL in Concert (2016)</li>
+                <li>abraBRASSdabra (2018)</li>
             </ul>
         </div>
     </section>

@@ -98,6 +98,9 @@ switch ($siteQualifier) {
                         <a href="?s=home">Home</a>
                     </li>
                     <li>
+                        <a href="?s=home#kontakt">Kontakt</a>
+                    </li>
+                    <li>
                         <a href="?s=aktuelles">Aktuelles</a>
                     </li>
                     <li>
@@ -120,9 +123,6 @@ switch ($siteQualifier) {
                     </li>
                     <li>
                         <a href="?s=home#references">Referenzen</a>
-                    </li>
-                    <li>
-                        <a href="?s=home#kontakt">Kontakt</a>
                     </li>
                 </ul>
             </div><!-- /.navbar-collapse -->

@@ -110,7 +110,7 @@ class MediaBean {
     }
   }
 
-  function fillMediaEventObject($myrow) {
+  static function fillMediaEventObject($myrow) {
     $mediaEvent = new MediaEvent();
     $mediaEvent->setMediaeventId($myrow['mediaeventId']);
     $mediaEvent->setDirectoryEvent($myrow['directoryEvent']);
@@ -142,7 +142,7 @@ class MediaBean {
     return $mediaItem;       
   }
 
-  function fillMediaKindObject($myrow) {
+  static function fillMediaKindObject($myrow) {
     $mediaKind = new MediaKind();
     $mediaKind->setMediakindId($myrow['mediakindId']);
     $mediaKind->setDirectory($myrow['directory']);
@@ -151,7 +151,7 @@ class MediaBean {
     return $mediaKind;       
   }
 
-  function fillMediacategoryObject($myrow) {
+  static function fillMediacategoryObject($myrow) {
     $mediacategory = new Mediacategory();
     $mediacategory->setMediacategoryId($myrow['mediacathegoryId']);
     $mediacategory->setDirectory($myrow['directory']);
