@@ -3,7 +3,7 @@
         <div class="header-content">
             <div class="header-content-inner">
                 <h1 style="margin-top: 1em;text-shadow: 3px 3px 3px #D2232A, 4px 4px 3px #FFFFFF, -1px -1px 3px #FFFFFF, 1px -1px 3px #FFFFFF, -1px 1px 3px #FFFFFF;">Blechophon</h1>
-                <h1 style="margin-top: 0em;text-shadow: 3px 3px 3px #D2232A, 4px 4px 3px #FFFFFF, -1px -1px 3px #FFFFFF, 1px -1px 3px #FFFFFF, -1px 1px 3px #FFFFFF;font-size: 1.8em"><span style="font-size: 80%">Quintett</span> -  Septett  -  <span style="font-size: 80%">Quartett</span></h1>
+                <h1 style="margin-top: 0em;text-shadow: 3px 3px 3px #D2232A, 4px 4px 3px #FFFFFF, -1px -1px 3px #FFFFFF, 1px -1px 3px #FFFFFF, -1px 1px 3px #FFFFFF;font-size: 1.8em"><span style="font-size: 70%">Quintett</span> -  Septett  -  <span style="font-size: 70%">Quartett</span></h1>
             </div>
         </div>
     </header>
