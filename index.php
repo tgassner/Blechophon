@@ -69,6 +69,9 @@ switch ($siteQualifier) {
 
 <body>
 
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/de_DE/sdk.js#xfbml=1&version=v21.0"></script>
+
 <!--
 <div id='BruckMuehle' style="position: fixed; height:160px; z-index:999999; width: 100%; top: 52px; text-align: center;">
     <a href="http://www.bruckmuehle.at/?id=82&event=3637" target="_blank"><img src="images/Bruckmuehle_Werbebild02.jpg" alt="" style="height: 120px"></a>
@@ -143,12 +146,16 @@ switch ($siteQualifier) {
                     <div class="col-sm-3" style="margin-top:50px">
                         <h2 class="section-heading">Contact Us</h2>
                     </div>    
-                    <div class="col-sm-3" style="margin-top:40px">
-                        <p><span class="glyphicon glyphicon-earphone"></span><br> +43 664 5974144</p>
-                    </div>  
-                    <div class="col-sm-3" style="margin-top: 40px">
-                        <p><span class="glyphicon glyphicon-envelope"></span><br> max.eckert@blechophon.at</p>
-                    </div>  
+                    <a href="tel:+436645974144" style="text-decoration:none; color: inherit">
+                        <div class="col-sm-3" style="margin-top:40px">
+                            <p><span class="glyphicon glyphicon-earphone"></span><br> +43 664 5974144</p>
+                        </div>
+                    </a>
+                    <a href="mailto:max.eckert@blechophon.at?subject=Anfrage via blechophon.at" style="text-decoration:none; color: inherit">
+                        <div class="col-sm-3" style="margin-top: 40px">
+                            <p><span class="glyphicon glyphicon-envelope"></span><br> max.eckert@blechophon.at</p>
+                        </div>
+                    </a>
                     <div class="col-sm-3" style="">
                         <p><img class="img-responsive img-circle center-block" src="images/personen/thumbnails/eckertmarkus.jpg" alt="Markus Eckert"></p>
                         <p><span>Markus Eckert</p>

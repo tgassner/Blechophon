@@ -13,7 +13,7 @@
 <section class="content content-3">
     <div class="container">
         <div class="row">
-            <script src='http://connect.facebook.net/de_DE/all.js#xfbml=1'></script> <fb:like-box href='http://www.facebook.com/#!/pages/Blechophon/196287127083396' width='400px' show_faces='true' stream='true' header='false'></fb:like-box>
+            <div class="fb-page" data-href="https://www.facebook.com/Blechophon" data-tabs="timeline" data-width="400" data-height="" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/Blechophon" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/Blechophon">Blechophon</a></blockquote></div>
         </div>
     </div>
 </section>
