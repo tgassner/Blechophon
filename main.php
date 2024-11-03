@@ -20,7 +20,7 @@
                     <p class="text-light justify">Die Wurzeln von BLECHOPHON liegen in einem Blechbläserensemble welches 2006 für einen Auftritt bei einer Bergmesse gegründet wurde und aus Mitgliedern bestand, welche sich bereits aus Ihrer gemeinsamen Zeit beim Jugendorchester in Engerwitzdorf kannten.</p>
                     <p class="text-light justify">In den Jahren danach wurde die Besetzung dieses Ensembles immer wieder verändert und neue Mitglieder kamen hinzu bis schließlich 2008 BLECHOPHON als eigenständiges Ensemble gegründet wurde.</p>
                     <p class="text-light justify">Seit dieser Zeit spielt BLECHOPHON bei verschiedensten Veranstaltungen wie Frühschoppen, Dämmerschoppen, Polterabenden, Weihnachtsfeiern, Firmenfeiern, Messen und noch vielen mehr frei nach unserem Motto „Musik mit Begeisterung und Leidenschaft auf hohem Niveau“.</p>
-                    <p class="text-light justify">Ja nach Veranstaltung kann BLECHOPHON auch in unterschiedlichen Formationen auftreten – von Quartett über Quintett bis hin zum Septett.</p>
+                    <p class="text-light justify">Ja nach Veranstaltung kann BLECHOPHON auch in unterschiedlichen Formationen auftreten – von Septett über Quintett bis hin zum Quartett.</p>
                 </div>
             </div>
         </div>
