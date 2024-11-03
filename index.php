@@ -52,10 +52,10 @@ switch ($siteQualifier) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Ing. Thomas Gassner, M.Sc.">
-    <meta name="keywords" content="Blechophon, Blasmusik, Trompete, Tenorhorn, Tuba, Schlagzeug, Ensemble">
+    <meta name="keywords" content="Blechophon, Blasmusik, Trompete, Tenorhorn, Tuba, Schlagzeug, Ensemble, Quartett, Septett, Quintett">
     <meta NAME="robots" CONTENT="index,follow">
     <meta NAME="language" CONTENT="de">
-    <meta name="description" content="Blechophon - Blechbläser Ensemble" >
+    <meta name="description" content="Blechophon - Blechbläser Ensemble, Quartett, Septett, Quintett" >
     <link rel="icon" href="images/favicon.png" type="image/png">
     <title><?php echo($title); ?></title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -68,9 +68,6 @@ switch ($siteQualifier) {
 </head>
 
 <body>
-
-<div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/de_DE/sdk.js#xfbml=1&version=v21.0"></script>
 
 <!--
 <div id='BruckMuehle' style="position: fixed; height:160px; z-index:999999; width: 100%; top: 52px; text-align: center;">
@@ -90,7 +87,7 @@ switch ($siteQualifier) {
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="?s=home">
-                	<span class="glyphicon glyphicon-music"></span> 
+                	<span class="glyphicon glyphicon-music"></span>
                 	Blechophon
                 </a>
             </div>
