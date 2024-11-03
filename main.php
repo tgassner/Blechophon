@@ -21,7 +21,6 @@
                     <p class="text-light justify">In den Jahren danach wurde die Besetzung dieses Ensembles immer wieder verändert und neue Mitglieder kamen hinzu bis schließlich 2008 BLECHOPHON als eigenständiges Ensemble gegründet wurde.</p>
                     <p class="text-light justify">Seit dieser Zeit spielt BLECHOPHON bei verschiedensten Veranstaltungen wie Frühschoppen, Dämmerschoppen, Polterabenden, Weihnachtsfeiern, Firmenfeiern, Messen und noch vielen mehr frei nach unserem Motto „Musik mit Begeisterung und Leidenschaft auf hohem Niveau“.</p>
                     <p class="text-light justify">Ja nach Veranstaltung kann BLECHOPHON auch in unterschiedlichen Formationen auftreten – von Quartett über Quintett bis hin zum Septett.</p>
-                    <p class="text-light justify"><span style="font-weight: bold">BLECHOPHON</span> immer die richtige Wahl für gute Unterhaltung und Stimmung!</p>
                 </div>
             </div>
         </div>
