@@ -2,8 +2,8 @@
 <header>
         <div class="header-content">
             <div class="header-content-inner">
-                <h1 style="margin-top: 4.5em;text-shadow: 3px 3px 3px #D2232A, 4px 4px 3px #FFFFFF, -1px -1px 3px #FFFFFF, 1px -1px 3px #FFFFFF, -1px 1px 3px #FFFFFF;">Blechophon</h1>
-                <h1 style="margin-top: 0em;text-shadow: 3px 3px 3px #D2232A, 4px 4px 3px #FFFFFF, -1px -1px 3px #FFFFFF, 1px -1px 3px #FFFFFF, -1px 1px 3px #FFFFFF;font-size: 2.3em">Quartett  -  Septett  -  Quintett</h1>
+                <h1 style="margin-top: 1em;text-shadow: 3px 3px 3px #D2232A, 4px 4px 3px #FFFFFF, -1px -1px 3px #FFFFFF, 1px -1px 3px #FFFFFF, -1px 1px 3px #FFFFFF;">Blechophon</h1>
+                <h1 style="margin-top: 0em;text-shadow: 3px 3px 3px #D2232A, 4px 4px 3px #FFFFFF, -1px -1px 3px #FFFFFF, 1px -1px 3px #FFFFFF, -1px 1px 3px #FFFFFF;font-size: 1.8em">Quartett  -  Septett  -  Quintett</h1>
             </div>
         </div>
     </header>
@@ -179,6 +179,9 @@
                 <li>Marktfest Schenkenfelden</li>
                 <li>Musiroas Herzogsdorf</li>
                 <li>Auftritte bei „Blasmusik in Linz“ (Musikpavillon/Hauptplatz)</li>
+            </ul>
+            <h3>Konzerte</h3>
+            <ul>
                 <li>Blechophon in Concert (2014)</li>
                 <li>Blechophon XL in Concert (2016)</li>
                 <li>abraBRASSdabra (2018)</li>
