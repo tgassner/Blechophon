@@ -490,5 +490,6 @@ img::-moz-selection {
 
 
 .justify {
-    text-align:justify
+    text-align:justify;
+    hyphens: auto;
   }
