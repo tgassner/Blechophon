@@ -113,7 +113,7 @@
                     <p class="text-light">Musikverein Engerwitzdorf</p>
                 </div>
                 <div class="col-sm-6">
-                    <p class="text-lighter"><a class="text-lighter" href="http://musik-engerwitzdorf.at">http://musik-engerwitzdorf.at</a>	 </p>
+                    <p class="text-lighter"><a class="text-lighter" href="https://www.musik-engerwitzdorf.at/">https://www.musik-engerwitzdorf.at/</a>	 </p>
                 </div>
             </div>
             <div class="container">
@@ -121,7 +121,7 @@
                     <p class="text-light">Musikverein Grünbach</p>
                 </div>
                 <div class="col-sm-6">
-                    <p class="text-lighter"><a class="text-lighter" href="http://musikgr.bplaced.net/">http://musikgr.bplaced.net/</a></p>
+                    <p class="text-lighter"><a class="text-lighter" href="https://www.mv-gruenbach.at/">https://www.mv-gruenbach.at/</a></p>
                 </div>
             </div>
             <div class="container">
@@ -129,7 +129,7 @@
                     <p class="text-light">Musikverein Katsdorf</p>
                 </div>
                 <div class="col-sm-6">
-                    <p class="text-lighter"><a class="text-lighter" href="http://www.musikverein-katsdorf.at/">http://www.musikverein-katsdorf.at/</a>	     </p>
+                    <p class="text-lighter"><a class="text-lighter" href="https://www.musikverein-katsdorf.at/mvkneu/">https://www.musikverein-katsdorf.at/mvkneu/</a>	     </p>
                 </div>
             </div>
             <div class="container">
@@ -137,7 +137,7 @@
                     <p class="text-light">Musikverein Bad Leonfelden</p>
                 </div>
                 <div class="col-sm-6">
-                    <p class="text-lighter"><a class="text-lighter" href="http://www.mv-badleonfelden.at">http://www.mv-badleonfelden.at</a>	 </p>
+                    <p class="text-lighter"><a class="text-lighter" href="https://www.mv-badleonfelden.at/">https://www.mv-badleonfelden.at/</a>	 </p>
                 </div>
             </div>
             <div class="container">
@@ -145,7 +145,7 @@
                     <p class="text-light">Mehl Brass</p>
                 </div>
                 <div class="col-sm-6">
-                    <p class="text-lighter"><a class="text-lighter" href="http://mehlbrass.mmsoft.at/">http://mehlbrass.mmsoft.at/</a>	 </p>
+                    <p class="text-lighter"><a class="text-lighter" href="https://mehlbrass.mmsoft.at/">https://mehlbrass.mmsoft.at/</a>	 </p>
                 </div>
             </div>
             <div class="container">
