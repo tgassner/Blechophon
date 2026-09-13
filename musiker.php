@@ -77,10 +77,10 @@
         </div>
 </section>
 
-<link rel="stylesheet" href="css/photoswipe.css"> 
-<link rel="stylesheet" href="css/photoswipe-skin.css"> 
-<script src="js/photoswipe.min.js"></script> 
-<script src="js/photoswipe-ui-default.min.js"></script> 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js"></script> 
 
 <section class="content content-3">
         <div class="container">

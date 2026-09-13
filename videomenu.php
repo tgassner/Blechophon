@@ -20,7 +20,7 @@
                             if ($lastyear != "") {
                                 echo("</div>");
                             }
-                            echo("<h2 style='font-weight:bold'>" . $video->getyear() . "</h2>");
+                            //echo("<h2 style='font-weight:bold'>" . $video->getyear() . "</h2>");
                             echo("<div class='foto-menu-group'>");
                         }
 
