@@ -24,10 +24,11 @@ if ($mediaevent == null) {
 <link rel="stylesheet" href="css/photoswipe-skin.css"> 
 
 <!-- Core JS file -->
-<script src="js/photoswipe.min.js"></script> 
+<script src="js/photoswipe.js"></script> 
 
 <!-- UI JS file -->
-<script src="js/photoswipe-ui-default.min.js"></script> 
+<!-- <script src="js/photoswipe-ui-default.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js"></script>
 
 <section class="content content-fotomenu">
     <div class="container">
