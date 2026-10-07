@@ -19,6 +19,7 @@
 
 include('include/termine.inc.php');
 include('include/user.inc.php');
+include('include/media.inc.php');
 include('../include/password.inc.php');
 
   

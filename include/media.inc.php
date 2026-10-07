@@ -25,7 +25,8 @@ class MediaBean {
         $db = null;
         return $mediaevents;
     } catch (PDOException $e) {
-        LoggingBean::dologging(LoggingBean::ERROR, "mediaevent", $e->getMessage(), $e);
+        //LoggingBean::dologging(LoggingBean::ERROR, "mediaevent", $e->getMessage(), $e);
+        print_r($e);
     }
   }
 
@@ -127,7 +128,7 @@ class MediaBean {
     return $mediaEvent;       
   }
 
-  function fillMediaItemObject($myrow) {
+  static function fillMediaItemObject($myrow) {
     $mediaItem = new MediaItem();
     $mediaItem->setMediaItemId($myrow['mediaItemId']);
     $mediaItem->setFilename($myrow['filename']);
@@ -217,11 +218,11 @@ class Mediacategory {
   }
   
   function getMediacategoryId(){
-      return $this->mediacategoryId;
+      return $this->mediacathegoryId;
     }
     
   function setMediacategoryId($mediacategoryId){
-    $this->mediacategoryId = $mediacategoryId;
+    $this->mediacathegoryId = $mediacategoryId;
   }
   
   function getDirectory(){
