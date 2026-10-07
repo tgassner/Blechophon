@@ -77,7 +77,7 @@
                     <div style="display: flex; flex-direction: row; width: 100%; ">
                         <div title="laufende Nummer" style="width: 30px"><?php echo($count++); ?> </div>
                         <div title="MediaItem Id" style="width: 50px"><?php echo($mediaItem->getMediaItemId()); ?> </div>
-                        <button title="Löschen!!!" style="width: 70px; background-color: #ff0000" onclick="deleteFoto(<?php echo($mediaItem->getMediaItemId()); ?>)"> Löschen </button>
+                        <button title="Löschen!!!" style="width: 70px; background-color: #ff0000" onclick="deleteFoto(<?php echo($mediaItem->getMediaItemId()); ?>, <?php echo($oneMediaEvent->getMediaeventId()); ?>)"> Löschen </button>
                         <div title="Dateiname" style="width: 40px; padding-left: 5px"><?php echo($mediaItem->getFilename()); ?> </div>
                     </div>
                 <?php } ?>
@@ -145,6 +145,7 @@
             })
             .catch(err => {
                 console.error('Anfrage fehlgeschlagen:', err);
+                alert("Fehler:" + err);
             });
     }
 
@@ -197,11 +198,25 @@
         }
     }
 
-    function deleteFoto(mediaItemId) {
+    function deleteFoto(mediaItemId, mediaEventId) {
         if (!confirm("Foto wirklich löschen")) {
             return;
         }
-        alert("ToDo: Delete Foto:" + mediaItemId);
+
+        let json = {};
+        json["mediaItemId"] = mediaItemId;
+        json["mediaEventId"] = mediaEventId;
+        json["action"] = "deleteMediaItem";
+
+        sendDataToServer(json)
+            .then(responseData => {
+                console.log('Antwort vom Server:', responseData);
+                window.location.reload(true);
+            })
+            .catch(err => {
+                console.error('Anfrage fehlgeschlagen:', err);
+                alert("Fehler:" + err);
+            });
     }
 
     function addFoto(mediaEventId, mediaEventName) {

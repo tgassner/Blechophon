@@ -54,6 +54,25 @@ class MediaBean {
         //}
     }
 
+    public static function getMediaItemById($mediaItemId) {
+        $sql = "SELECT * FROM mediaitem WHERE mediaItemId = :mediaItemId";
+        //try {
+        $db = getDBPDO();
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam("mediaItemId", $mediaItemId, PDO::PARAM_INT);
+        $stmt->execute();
+        $ret = null;
+        $myrow = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($myrow) {
+            $ret = MediaBean::fillMediaItemObject($myrow);
+        }
+        $db = null;
+        return $ret;
+        //} catch (PDOException $e) {
+        //    LoggingBean::dologging(LoggingBean::ERROR, "mediacategory", $e->getMessage(), $e);
+        //}
+    }
+
     public static function storeMediaItem(MediaItem $mediaItem)
     {
         $sqlInsert = "INSERT INTO mediaitem (filename, comment, mainwidth, mainheight, thumbwidth, thumbheight, duration, bytes, mediaeventId) \n".
@@ -103,6 +122,26 @@ class MediaBean {
         //    return true;
         //} catch (PDOException $e) {
         //    //LoggingBean::dologging(LoggingBean::ERROR, "mediaevent", $e->getMessage(), $e);
+        //    return false;
+        //}
+    }
+
+    public static function deleteMediaItemId(int $mediaItemId) {
+        $sql = "delete from mediaitem WHERE mediaItemId=:mediaItemId";
+        //try {
+            $db = getDBPDO();
+            $stmt = $db->prepare($sql);
+            $stmt->bindParam("mediaItemId", $mediaItemId, PDO::PARAM_INT);
+            $stmt->execute();
+            if ($stmt->rowCount() == 1) {
+                $db = null;
+                return true;
+            } else {
+                $db = null;
+                return false;
+            }
+        //} catch (PDOException $e) {
+        //    LoggingBean::dologging(LoggingBean::ERROR, "termine", $e->getMessage(), $e);
         //    return false;
         //}
     }

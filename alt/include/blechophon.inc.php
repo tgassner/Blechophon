@@ -1,10 +1,10 @@
 <?php
 
   function getDBPDO() {
-      $dbhost = "localhost";
-      $dbuser = "blechophon";
-      $dbpass = getPassword();
-      $dbname = "blechophon";
+    $dbhost = "localhost";
+    $dbuser = "blechophon";
+    $dbpass = getPassword();
+    $dbname = "blechophon";
 
       $dbh = new PDO(
           "mysql:host=$dbhost;dbname=$dbname",

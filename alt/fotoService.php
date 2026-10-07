@@ -34,7 +34,6 @@ try {
     $action = $data['action'];
 
     $ret = false;
-    $mediaEvent = null;
     if ($action === "update") {
         $mediaEventId = $data['mediaEventId'];
         $mediaEvent = MediaBean::getMediaeventById($mediaEventId);
@@ -51,13 +50,32 @@ try {
         $mediaEvent->setMediakindId(1);
         $mediaEvent->setMediaItems(null);
         $ret = MediaBean::storeMediaEvent($mediaEvent);
-    }
+    } else if ($action === "deleteMediaItem") {
+        $mediaItemId = $data['mediaItemId'];
+        $mediaEventId = $data['mediaEventId'];
+        $mediaEvent = MediaBean::getMediaeventById($mediaEventId);
+        $mediaItem = MediaBean::getMediaItemById($mediaItemId);
 
-    // -------------------------------------------------------------
-    // Hier deinen Business-Logic-Service aufrufen:
-    // z.B. $myService = new MyBusinessService();
-    // $result = $myService->process($data);
-    // -------------------------------------------------------------
+        $pathPrefix = __DIR__ . "/../fotos/event/";
+        $pathyear = $pathPrefix . $mediaEvent->getYear();
+        $pathMediaEventDirectory = $pathyear . "/" . $mediaEvent->getDirectoryEvent();
+
+        $pathMediaEventFotosDirectory = $pathMediaEventDirectory . "/" . $mediaEvent->getDirectoryMain();
+        $pathMediaEventThumbnailsDirectory = $pathMediaEventDirectory . "/" . $mediaEvent->getDirectoryThumbs();
+
+        $pathFoto = $pathMediaEventFotosDirectory . "/" . $mediaItem->getFilename();
+        $pathThumb = $pathMediaEventThumbnailsDirectory . "/" . $mediaItem->getFilename();
+
+        if (is_file($pathFoto)) {
+            unlink($pathFoto);
+        }
+
+        if (is_file($pathThumb)) {
+            unlink($pathThumb);
+        }
+
+        MediaBean::deleteMediaItemId($mediaItemId);
+    }
 
     // Beispielhafte Erfolgsrückgabe:
     http_response_code(200);
