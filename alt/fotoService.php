@@ -6,6 +6,16 @@ header('Content-Type: application/json; charset=utf-8');
 include_once('include/blechophon.inc.php');
 include_once('include/media.inc.php');
 
+if (session_id() == '') {
+     $started = session_start();
+}
+
+if (!isLoggedIn()) {
+    echo("Not logged in. => die");
+    die();
+}
+
+
 // Nur POST-Anfragen erlauben
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);

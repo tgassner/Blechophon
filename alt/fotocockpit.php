@@ -1,5 +1,14 @@
 <h1>Foto Cockpit</h1>
 
+<?php
+
+if (!isLoggedIn()) {
+    echo("Not logged in. => die");
+    die();
+}
+
+?>
+
 <div id="MediaEventFormDiv" style="display: flex; flex-direction: column; width: 100%; ">
     <div style="display: flex; flex-direction: row; margin: 5px">
         <label for="mediaeventId" style="width: 120px"> MediaEventId: </label>

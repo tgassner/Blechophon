@@ -5,6 +5,15 @@ header('Content-Type: application/json');
 include_once('include/blechophon.inc.php');
 include_once('include/media.inc.php');
 
+if (session_id() == '') {
+    $started = session_start();
+}
+
+if (!isLoggedIn()) {
+    echo("Not logged in. => die");
+    die();
+}
+
 // 1. Konfiguration
 $maxPhotoWidth  = 1200; // Maximale Breite Hauptbild (px)
 $maxPhotoHeight = 1200; // Maximale Höhe Hauptbild (px)
